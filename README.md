@@ -8,6 +8,8 @@ You can find the paper [here](https://www.ipb.uni-bonn.de/wp-content/papercite-d
 
 Install the libraries of the `requirements.yml`, or create a conda environment by `conda env create -f requirements.yml` and then `conda activate openworld`.
 
+The weights of ResNet34 with NonBottleneck 1D block pretrained on ImageNet are available [here](https://drive.google.com/drive/folders/1goULJjHp5-M7nUGlC52uvWaQxn2j3Za1?usp=sharing).
+
 ## Training
 
 You can choose your favourite hyperparameters configuration in `args.py`. For training, run
