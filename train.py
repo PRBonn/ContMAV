@@ -92,9 +92,7 @@ def train_main():
         for name, param in model.named_parameters():
             if "out" not in name:
                 param.requires_grad = False
-    import ipdb
 
-    ipdb.set_trace()
     # loss, optimizer, learning rate scheduler, csvlogger  ----------
 
     # loss functions
@@ -281,7 +279,7 @@ def train_one_epoch(
             loss_ows = loss_mav(pred_scales, label, is_train=True)
             total_loss += 0.1 * loss_ows
         if loss_contrastive is not None:
-            loss_con = loss_contrastive(mavs, pred_scales, label, epoch)
+            loss_con = loss_contrastive(mavs, ow_res, label, epoch)
             total_loss += 0.5 * loss_con
 
         total_loss.backward()
