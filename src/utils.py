@@ -191,11 +191,11 @@ class ObjectosphereLoss(nn.Module):
         logits_kn = logits.permute(0, 2, 3, 1)[torch.where(sem_gt != 255)]
 
         if len(logits_unk):
-            loss_unk = torch.linalg.norm(logits_unk, dim=1).mean()
+            loss_unk = (torch.linalg.norm(logits_unk, dim=1)**2).mean()
         else:
             loss_unk = torch.tensor(0)
         if len(logits_kn):
-            loss_kn = F.relu(self.sigma - torch.linalg.norm(logits_kn, dim=1)).mean()
+            loss_kn = F.relu(self.sigma - (torch.linalg.norm(logits_kn, dim=1)**2)).mean()
         else:
             loss_kn = torch.tensor(0)
 
