@@ -255,6 +255,7 @@ def train_one_epoch(
         label_ss[label_ss == 255] = 0
         target_scales = label_ss
 
+        # this is more efficient than optimizer.zero_grad()
         for param in model.parameters():
             param.grad = None
 
